@@ -1,0 +1,3 @@
+rootProject.name = 'RNAppsCoast'
+
+include ':app'
