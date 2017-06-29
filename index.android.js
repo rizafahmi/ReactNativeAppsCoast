@@ -1,33 +1,34 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import React, { Component } from 'react'
+import { AppRegistry, StyleSheet, Text, View } from 'react-native'
+import Video from 'react-native-video'
 
 export default class RNAppsCoast extends Component {
-  render() {
+  onProgress ({ currentTime }) {
+    console.log(currentTime)
+  }
+  onEnd () {
+    console.log('end')
+  }
+  render () {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <Video
+          source={{
+            uri: 'https://api.soundcloud.com/tracks/316568736/stream?client_id=0f2c62e4540699fd850f4beb2f9583d6'
+          }}
+          ref='audio'
+          volume={1.0}
+          muted={false}
+          paused={false}
+          playInBackground
+          playWhenInactive
+          onProgress={this.onProgress}
+          onEnd={this.onEnd}
+          resizeMode='cover'
+          repeat={false}
+        />
       </View>
-    );
+    )
   }
 }
 
@@ -36,18 +37,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5FCFF'
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    margin: 10
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
-  },
-});
+    marginBottom: 5
+  }
+})
 
-AppRegistry.registerComponent('RNAppsCoast', () => RNAppsCoast);
+AppRegistry.registerComponent('RNAppsCoast', () => RNAppsCoast)
