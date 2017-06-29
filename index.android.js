@@ -24,7 +24,7 @@ export default class RNAppsCoast extends Component {
     })
   }
   render () {
-    let title = this.state.paused ? 'Pause' : 'Play'
+    let title = this.state.paused ? 'Play' : 'Pause'
     return (
       <View style={styles.container}>
         <Button onPress={() => this.togglePlay()} title={title} />
